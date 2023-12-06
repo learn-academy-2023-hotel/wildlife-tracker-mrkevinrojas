@@ -2,12 +2,12 @@ class AnimalsController < ApplicationController
     # Story 1, part 2: Can see the data response of all the animals
     def index
         animals = Animal.all
-        render json: animals
+        render json: animals, include: [:sightings]
     end
 
     def show
         animal = Animal.find(params[:id])
-        render json: animal
+        render json: animal, include:[:sightings]
     end
 
     # Story 1, part 3: Can create a new animal in the database
